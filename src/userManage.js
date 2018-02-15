@@ -44,6 +44,15 @@ function getUser(uid) {
     });
 }
 
+const email = "";
+admin.auth.getUserByEmail(email)
+    .then(function (userRecord) {
+        console.log("success ", userRecord.toJSON());
+    })
+    .catch(function (error) {
+        console.log("error" + error)
+    });
+
 
 function updateUser(uid) {
     admin.auth().updateUser(uid, {
@@ -69,3 +78,21 @@ admin.auth().deleteUser(uid)
     }).catch(function (error) {
     console.log("Error deleting user:", error);
 });
+
+const nextPageToken = "";
+
+function listAllUsers(nextPageToken) {
+    admin.auth().listUsers(1000, nextPageToken)
+        .then(function (listUserResult) {
+            listUserResult.users.forEach(function (userRecord) {
+                console.log("user--->" + userRecord.toJSON())
+            });
+            if (listUserResult.pageToken) {
+                // list next users
+                listAllUsers(listUserResult.pageToken)
+            }
+        }).catch(function (error) {
+        console.log("error list of users", error)
+    })
+}
+

@@ -15,6 +15,7 @@ admin.auth()
     .verifyIdToken(idToken)
     .then(function (decodedToken) {
         const uid = decodedToken.uid;
+        console.log("uid--->" + uid)
     }).catch(function (error) {
     console.log("error-->" + JSON.stringify(error))
 });
