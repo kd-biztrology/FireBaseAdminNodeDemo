@@ -1,0 +1,11 @@
+{
+  "name": "fcmDemo",
+  "version": "0.0.1",
+  "scripts": {
+    "run":"node src/firebase.js"
+  },
+  "dependencies": {
+    "firebase": "^4.9.1",
+    "firebase-admin": "^5.8.2"
+  }
+}
